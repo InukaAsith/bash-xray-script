@@ -45,30 +45,6 @@ cat << EOF > /usr/local/etc/xray/config.json
   },
   "inbounds": [
     {
-      "port": 443,
-      "protocol": "vless",
-      "settings": {
-        "clients": [
-          {
-            "id": "$UUID"
-          }
-        ],
-        "decryption": "none"
-      },
-      "streamSettings": {
-        "network": "ws",
-        "security": "tls",
-        "tlsSettings": {
-          "certificates": [
-            {
-              "certificateFile": "/etc/xray/xray.crt",
-              "keyFile": "/etc/xray/xray.key"
-            }
-          ]
-        }
-      }
-    },
-    {
       "port": 80,
       "protocol": "vless",
       "settings": {
