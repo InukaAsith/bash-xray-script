@@ -87,47 +87,6 @@ cat << EOF > /usr/local/etc/xray/config0.json
 ]
 }
 EOF
-cat << EOF > /usr/local/etc/xray/config1.json
-{
-    "inbounds": [
-	{
-            "port": 443,
-            "protocol": "vless",
-			"tag":"XTLS",
-            "settings": {
-                "clients": [
-                    {
-                        "id": "$uuid",
-                        "flow": "xtls-rprx-direct",
-                        "level": 0
-                    }
-                ],
-                "decryption": "none",
-				"fallbacks": [
-                    {
-                        "dest": "www.baidu.com:80"
-                    }
-                ]
-            },
-            "streamSettings": {
-                "network": "tcp",
-                "security": "xtls",
-                "xtlsSettings": {
-                    "alpn": [
-                        "http/1.1"
-                    ],
-                    "certificates": [
-                        {
-                            "certificateFile": "/etc/xray/xray.crt",
-                            "keyFile": "/etc/xray/xray.key"
-                        }
-                    ]
-                }
-            }
-        }
-	]
-}
-EOF
 cat << EOF > /usr/local/etc/xray/config2.json
 {
     "outbounds": [
