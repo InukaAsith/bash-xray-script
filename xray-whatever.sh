@@ -28,57 +28,6 @@ cat << EOF > /usr/local/etc/xray/config.json
   },
   "inbounds": [
     {
-      "port": 443,
-      "protocol": "vless",
-      "settings": {
-        "clients": [
-          {
-            "id": "$UUID",
-            "flow": "xtls-rprx-direct",
-            "level": 0,
-            "email": "love@example.com"
-          }
-        ],
-        "decryption": "none",
-        "fallbacks": [
-          {
-            "dest": 1310,
-            "xver": 1
-          },
-          {
-            "path": "/websocket",
-            "dest": 1234,
-            "xver": 1
-          },
-          {
-            "path": "/vmesstcp",
-            "dest": 2345,
-            "xver": 1
-          },
-          {
-            "path": "/vmessws",
-            "dest": 3456,
-            "xver": 1
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "tcp",
-        "security": "xtls",
-        "xtlsSettings": {
-          "alpn": [
-            "http/1.1"
-          ],
-          "certificates": [
-            {
-              "certificateFile": "/etc/xray/xray.crt",
-              "keyFile": "/etc/xray/xray.key"
-            }
-          ]
-        }
-      }
-    },
-    {
       "port": 1310,
       "listen": "127.0.0.1",
       "protocol": "trojan",
